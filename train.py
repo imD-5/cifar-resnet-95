@@ -8,19 +8,11 @@ from torch.utils.data import Dataset
 from torchvision import transforms
 from tqdm import tqdm_notebook as tqdm
 from PIL import Image
-from sklearn.model_selection import train_test_split
 import torch.nn as nn
 import torch.optim as optim
 import torch.autograd as autograd
 import torch.nn.functional as F
 from tqdm import tqdm
-
-# training data
-x_train = np.load('data/x_train.npy')
-t_train = np.load('data/t_train.npy')
-
-# test data
-x_test = np.load('data/x_test.npy')
 
 def unpickle(file):
     """Load CIFAR-10 batch file."""
@@ -279,7 +271,7 @@ def main():
     ])
 
     dataloader_train, dataloader_valid, dataloader_test = create_dataloaders(
-        root_dir='./cifar-10-batches-py',
+        root_dir='./data/cifar-10-batches-py',
         batch_size=64,
         val_size=500,
         transform_train=transform_train,
